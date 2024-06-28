@@ -1,0 +1,439 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": false,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 181,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "edndbmyghbhtsb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "applyToRow": true,
+              "mode": "gradient",
+              "type": "color-background"
+            },
+            "inspect": true,
+            "minWidth": 60,
+            "width": 300
+          },
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "PRIMARY"
+                },
+                "2": {
+                  "color": "blue",
+                  "index": 1,
+                  "text": "SECONDARY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Field"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 386
+              },
+              {
+                "id": "displayName",
+                "value": "REPLICA"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "ROLE"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "edndbmyghbhtsb"
+          },
+          "editorMode": "code",
+          "expr": "sqlserver_hadr_replica_states_role",
+          "instant": false,
+          "legendFormat": " {{replica_server_name}} : {{failover_mode_desc}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Replica role",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {}
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "edndbmyghbhtsb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "2": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "KO"
+                },
+                "to": 1
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "NOT AVAILABLE FOR STANDALONE",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Field"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 533
+              },
+              {
+                "id": "displayName",
+                "value": "REPLICA"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": false
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 1
+                    },
+                    {
+                      "color": "green",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "STATUS"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Field"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 643
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "REPLICA"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 795
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 35,
+        "w": 9,
+        "x": 8,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "edndbmyghbhtsb"
+          },
+          "editorMode": "code",
+          "expr": "sqlserver_hadr_dbreplica_states_synchronization_health{sql_instance=\"$instance\"}",
+          "instant": false,
+          "legendFormat": "{{replica_server_name}} [{{database_name}}] --> {{synchronization_state_desc}} ",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Db status",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {}
+        },
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "DBCLU102P04:DATA_MGNT"
+          ],
+          "value": [
+            "DBCLU102P04:DATA_MGNT"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "edndbmyghbhtsb"
+        },
+        "definition": "label_values(sql_instance)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(sql_instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "GOANYWHERE"
+          ],
+          "value": [
+            "GOANYWHERE"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "edndbmyghbhtsb"
+        },
+        "definition": "label_values(sqlserver_hadr_replica_states_role,group_name)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "groupname",
+        "multi": false,
+        "name": "groupname",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(sqlserver_hadr_replica_states_role,group_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 3,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timeRangeUpdatedDuringEditOrView": false,
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "SqlServer_Hadr_Db_Status",
+  "uid": "bdo1r7tni8pa8a",
+  "version": 16,
+  "weekStart": ""
+}
